@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+       					   <!--  default-init-method="testBean_init" default-destroy-method="testBean_destory"-->
+       					   
+
+	<bean id = "obj1" class="kr.hs.study.beans.TestBean1" lazy-init="true" scope="prototype"/>
+	
+	<bean id="d1" class="kr.hs.study.beans.DataBean1"/>
+	<!-- <bean id="d2" class="kr.hs.study.beans.DataBena1"/> 여러개 적으면 byType에서 에러남 -->
+	
+	<bean id = "obj2" class="kr.hs.study.beans.TestBean1" lazy-init="true">
+		<constructor-arg value="10" index="0" type="int" /> 
+		<constructor-arg value="11.11" index="1" type="double"/>
+		<constructor-arg value="NCSDB" index="2" type="java.lang.String"/>
+		<constructor-arg ref="d1" index="3"/>
+	</bean>
+	
+	<bean id="obj3" class="kr.hs.study.beans.TestBean1" lazy-init="true">
+		<property name="a" value="20"/>
+		<property name="b" value="22.22"/>
+		<property name="c" value="spring2"/> 
+		<property name="d1" ref="d1"/>
+	</bean>
+	
+	<bean id="obj4" class="kr.hs.study.beans.TestBean1" autowire="byName"/>
+	<!-- private DataBean1 d1;에서 d1과 동일한 이름의 bean 객체 할당 -->
+	<!-- 맴버변수 이름 ==== bean의 id가 동일한 것이 자동주입 -->
+	
+	
+	<!-- byType -->
+	<!-- byType일 경우 동일한 이름의 bean이 2개 이상 존재할 경우에는 에러가 발생한다. -->
+	<bean id="obj5" class="kr.hs.study.beans.TestBean1" autowire="byType"/>
+	
+	<bean id="obj6" class="kr.hs.study.beans.TestBean1" autowire="constructor"/>
+	
+	<bean id="obj7" class="kr.hs.study.beans.TestBean1" autowire="byType">
+		<constructor-arg value="10" />
+		<constructor-arg value="22.22"/>
+		<constructor-arg value="spring3"/>
+	</bean>
+		
+</beans>
+
+
+
+
