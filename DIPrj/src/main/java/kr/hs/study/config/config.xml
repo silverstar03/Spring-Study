@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+       					   <!--  default-init-method="testBean_init" default-destroy-method="testBean_destory"-->
+       					   
+
+	<bean id="cu1" class="kr.hs.study.beans.Car">
+		<constructor-arg value="3000" type="int"/>
+		<constructor-arg value="sonata" type="java.lang.String"/>
+	</bean>
+
+	<bean id="t1" class="kr.hs.study.beans.CarUser" lazy-init="true">
+		<constructor-arg value="Kim" index="0" type="java.lang.String" />
+		<constructor-arg value="red" index="1" type="java.lang.String"/>
+		<constructor-arg ref="cu1" index="2"/>
+		<constructor-arg ref="cu1" index="3"/>
+	</bean>
+	
+</beans>
+
+
+
+
