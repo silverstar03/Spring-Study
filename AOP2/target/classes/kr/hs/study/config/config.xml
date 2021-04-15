@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans.xsd
+                       http://www.springframework.org/schema/context
+                       http://www.springframework.org/schema/context/spring-context.xsd
+                       http://www.springframework.org/schema/aop
+                       http://www.springframework.org/schema/aop/spring-aop.xsd"
+                       default-init-method="default_init"   default-destroy-method="default_destroy">
+   
+<context:annotation-config />
+	
+	<!-- 지정된 패키지 않에 있는 bean들의 annotation을 분석해서 생성한다. -->
+	<context:component-scan base-package="kr.hs.study.beans"/>
+	
+	
+	<bean id="obj1" class="kr.hs.study.beans.TestBean1"></bean>
+	
+	<bean id="obj2" class="kr.hs.study.beans.TestBean2"></bean>
+	
+	<bean id="advice1" class="kr.hs.study.advisor.Advice"></bean>
+	
+<!-- 	
+	<aop:config>
+		<aop:aspect ref="advice1">
+			<aop:pointcut id="point1" expression="execution(* method3())"/> 
+				<aop:before method="beforeMethod" pointcut-ref="point1"/>
+		</aop:aspect>
+	</aop:config>
+ --> 
+	
+	<aop:config>
+		<aop:aspect ref="advice1">
+			<!-- <aop:pointcut id="point2" expression="execution(* method*())"/> -->
+			
+			<!-- execution 연습 -->
+			<!-- <aop:pointcut id="point2"
+			expression="execution(* kr.hs.study.beans..*Bean1.method*())"/> 
+				<aop:before method="beforeMethod" pointcut-ref="point2"/>
+				<aop:after method="afterMethod" pointcut-ref="point2"/>-->
+			
+			<!-- around 연습 return타입이 없을 때 -->		
+			<!-- <aop:pointcut id="point" expression="execution(* method2())"/>
+			<aop:around method="aroundMethod" pointcut-ref="point"/> -->
+			
+			<aop:pointcut id="point" expression="execution(* func4())"/>
+			<aop:around method="aroundMethod" pointcut-ref="point"/>
+			
+			<!-- throw 연습 -->
+			<!-- <aop:pointcut id="point" expression="execution(* func1())"/>
+			<aop:after-throwing method="afterThrowing" pointcut-ref="point" throwing="e"/> -->
+			
+			<!-- returning 연습 -->
+			<!-- <aop:pointcut id="point" expression="execution(* method3())"/>
+			<aop:after-returning method="afterReturning" pointcut-ref="point"/> -->			
+			
+		</aop:aspect>
+	</aop:config>
+	    					
+	    					   
+	
+		
+</beans>
