@@ -12,7 +12,7 @@ public class MainClass {
 		
 		TestBean obj1 = ctx.getBean("t1", TestBean.class);
 		System.out.println("ojh1: "+obj1);
-		obj1.testBean_init();
+//		obj1.testBean_init();
 //		obj1.testBean_destroy();
 		
 		ctx.close();

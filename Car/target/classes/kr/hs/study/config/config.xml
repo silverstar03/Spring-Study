@@ -9,7 +9,7 @@
        					   
 	<context:annotation-config />
 	
-	<!-- 지정된 패키지 않에 있는 bean들의 annotation을 분석해서 생성한다. -->
+	<!-- 지정된 패키지 안에 있는 bean들의 annotation을 분석해서 생성한다. -->
 	<context:component-scan base-package="kr.hs.study.beans"/>
 	
 
